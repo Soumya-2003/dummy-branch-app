@@ -3,4 +3,7 @@ nginx/certs/
 *.crt
 *.key
 
-.env.*                
+.env
+.env.dev
+.env.staging
+.env.prod
