@@ -2,15 +2,15 @@ services:
   db:
     image: postgres:16
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: mic roloans
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-microloans}
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
     volumes:
-      - ${DB_VOLUME:-db_data}:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d microloans"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-microloans}"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -18,9 +18,9 @@ services:
   api:
     build: .
     environment:
-      FLASK_ENV: ${FLASK_ENV:-development}
+      FLASK_ENV: ${FLASK_ENV:-production}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
-      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/microloans
+      DATABASE_URL: postgresql+psycopg2://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@db:5432/${DB_NAME:-microloans}
       PORT: 8000
       PYTHONPATH: /app
     depends_on:
@@ -28,6 +28,8 @@ services:
         condition: service_healthy
     expose:
       - "8000"
+    volumes:
+      - ./:/app
     command: ${API_COMMAND:-gunicorn -w 2 -b 0.0.0.0:8000 wsgi:app}
 
 
@@ -37,9 +39,10 @@ services:
       - "443:443"
       - "80:80"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/certs:/etc/nginx/certs:ro
     depends_on:
       - api
 
 volumes:
+  pgdata:
