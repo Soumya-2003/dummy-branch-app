@@ -12,16 +12,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # =============== TEST STAGE ===============
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # =============== TEST STAGE ===============
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
       - name: Run basic app validation
         run: |
           docker compose build api
           docker compose up -d db
           sleep 15
-          docker compose run --rm api python -c "from app import create_app; app = create_app(); print('✅ App loads successfully')"
+          docker compose run --rm api python -c "from app import create_app; app = create_app(); print('App loads successfully')"
           docker compose down
 
       # =============== BUILD STAGE ===============
@@ -52,8 +57,8 @@ jobs:
           format: table
           severity: CRITICAL,HIGH
           ignore-unfixed: true
-          exit-code: '1'  # Fail if critical/high vulns found
-
+          exit-code: '1'  
+          
       # =============== PUSH STAGE (only on main branch push) ===============
       - name: Push image to Docker Hub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
