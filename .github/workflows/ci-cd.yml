@@ -45,8 +45,9 @@ jobs:
 
       # =============== SECURITY SCAN STAGE (using Trivy) ===============
       - name: Scan image for vulnerabilities
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.24.0
         with:
+          scan-type: image
           image-ref: ${{ steps.build.outputs.image }}
           format: table
           severity: CRITICAL,HIGH
