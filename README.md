@@ -17,6 +17,8 @@ This repository contains the complete **DevOps transformation** of the Branch Lo
 
 ---
 
+
+
 ## 📦 Quick Start: Run Locally
 
 Follow these steps to run locally 👇
@@ -86,6 +88,10 @@ Visit: http://localhost:3000
 
 <img width="1916" height="415" alt="branch-prometheus-graph" src="https://github.com/user-attachments/assets/50900c63-547d-4080-958e-67590b3a322f" />
 
+
+
+
+
 ## ⚙️ Multi-Environment Configuration
 
 Switch environments easily:
@@ -95,6 +101,9 @@ Switch environments easily:
 | **Development** | `docker compose --env-file .env.dev up -d --build`     |
 | **Staging**     | `docker compose --env-file .env.staging up -d --build` |
 | **Production**  | `docker compose --env-file .env.prod up -d --build`    |
+
+
+
 
 
 ## 🛡️ CI/CD Pipeline — GitHub Actions
@@ -113,6 +122,9 @@ Automatically runs on push and PR events:
 
 - Push → Publishes to Docker Hub (on main)
 - Secrets (DOCKERHUB_USERNAME, DOCKERHUB_TOKEN) are securely stored in GitHub.
+
+
+
 
 
 ## 📊 Observability & Monitoring
@@ -137,6 +149,8 @@ System-level metrics (CPU, memory, file descriptors)
 Endpoint: https://branchloans.com/metrics
 
 
+
+
 ## 🏗️ Architecture Diagram
 
 ![branch-workflow-gif](https://github.com/user-attachments/assets/8d78ad79-feed-49cc-ba63-8cae5a0c963c)
@@ -154,6 +168,8 @@ Visit:
 
 - Prometheus → http://localhost:9090
 - Grafana → http://localhost:3000
+
+
 
 
 ## 🧑‍💻 Author
