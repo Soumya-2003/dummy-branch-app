@@ -21,14 +21,14 @@ This repository contains the complete **DevOps transformation** of the Branch Lo
 
 Follow these steps to run locally 👇
 
-#### 🧩 Step 1: Clone and Fork
+### 🧩 Step 1: Clone and Fork
 
 ```bash
 git clone https://github.com/YOUR-GITHUB-USERNAME/dummy-branch-app.git
 cd dummy-branch-app
 ```
 
-#### 🔐 Step 2: Set Up Local Domain & SSL
+### 🔐 Step 2: Set Up Local Domain & SSL
 Add this to your /etc/hosts (Linux/macOS) or C:\Windows\System32\drivers\etc\hosts (Windows):
 
 ```127.0.0.1 branchloans.com```
@@ -43,19 +43,17 @@ openssl req -x509 -nodes -days 365 \
   -subj "/CN=branchloans.com"
 ```
 
-#### 🐳 Step 3: Build & Start Services
+### 🐳 Step 3: Build & Start Services
 ```
-
 docker compose --env-file .env.dev up -d --build
-
 docker compose exec api alembic upgrade head
-
 docker compose exec api python scripts/seed.py
 ```
 
-#### 🔎 Step 4: Verify Everything Works
+### 🔎 Step 4: Verify Everything Works
 
-### ✅ Health Check (with real DB connectivity) 
+#### ✅ Health Check (with real DB connectivity) 
+  
   https://branchloans.com/health
 
   Response
@@ -63,7 +61,7 @@ docker compose exec api python scripts/seed.py
 {"status": "healthy", "database": "connected"}
 ```
 
-### ✅ Prometheus Dashboard
+#### ✅ Prometheus Dashboard
 
 Visit: http://localhost:9090/targets
 
@@ -71,7 +69,7 @@ Visit: http://localhost:9090/targets
 
 <img width="1916" height="335" alt="branch-prometheus" src="https://github.com/user-attachments/assets/b1acedd1-eb98-4544-8ba9-a8f5858f952c" />
 
-### ✅ Grafana Dashboard
+#### ✅ Grafana Dashboard
 
 Visit: http://localhost:3000
 
@@ -80,7 +78,7 @@ Visit: http://localhost:3000
 <img width="796" height="284" alt="branch-grafana2" src="https://github.com/user-attachments/assets/dafafee7-4f5c-494c-a63a-16e73f1c10e6" />
 
 
-### ✅ Prometheus Query Example
+#### ✅ Prometheus Query Example
 
 ```In http://localhost:9090/graph``` : ```http_requests_total```
 
@@ -103,21 +101,18 @@ Switch environments easily:
 
 Automatically runs on push and PR events:
 
-✅ Push to main → Builds, scans, and pushes image to Docker Hub.
-
-✅ Pull Request → Runs tests & security scan, but does not push images.
+- Push to main → Builds, scans, and pushes image to Docker Hub.
+- Pull Request → Runs tests & security scan, but does not push images.
 
 ⚙️ Pipeline Stages
 
-🧪 Test → Validates imports and app startup
-
-🏗️ Build → Builds Docker image (tagged with Git SHA)
+- Test → Validates imports and app startup
+- Build → Builds Docker image (tagged with Git SHA)
 
 🔍 Security Scan → Trivy fails on critical CVEs
 
-🚀 Push → Publishes to Docker Hub (on main)
-
-🔐 Secrets (DOCKERHUB_USERNAME, DOCKERHUB_TOKEN) are securely stored in GitHub.
+- Push → Publishes to Docker Hub (on main)
+- Secrets (DOCKERHUB_USERNAME, DOCKERHUB_TOKEN) are securely stored in GitHub.
 
 
 ## 📊 Observability & Monitoring
@@ -157,12 +152,11 @@ curl -k https://branchloans.com/metrics
 
 Visit:
 
-Prometheus → http://localhost:9090
+- Prometheus → http://localhost:9090
+- Grafana → http://localhost:3000
 
-Grafana → http://localhost:3000
 
-
-### 🧑‍💻 Author
+## 🧑‍💻 Author
 
 Soumyadeep Mallick
 DevOps Engineer | Cloud & Automation Enthusiast
