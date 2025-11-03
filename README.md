@@ -45,13 +45,11 @@ openssl req -x509 -nodes -days 365 \
 
 #### 🐳 Step 3: Build & Start Services
 ```
-# Start in development mode
+
 docker compose --env-file .env.dev up -d --build
 
-# Run database migrations
 docker compose exec api alembic upgrade head
 
-# Seed sample data
 docker compose exec api python scripts/seed.py
 ```
 
