@@ -30,7 +30,8 @@ cd dummy-branch-app
 
 #### 🔐 Step 2: Set Up Local Domain & SSL
 Add this to your /etc/hosts (Linux/macOS) or C:\Windows\System32\drivers\etc\hosts (Windows):
-127.0.0.1 branchloans.com
+
+```127.0.0.1 branchloans.com```
 
 Generated a self-signed SSL certificate:
 ```
