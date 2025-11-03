@@ -124,6 +124,10 @@ Automatically runs on push and PR events:
 - Secrets (DOCKERHUB_USERNAME, DOCKERHUB_TOKEN) are securely stored in GitHub.
 
 
+  <img width="1913" height="576" alt="branch-github-actions" src="https://github.com/user-attachments/assets/3f45cec3-1c9e-4f65-a3d3-f761c8f188fd" />
+
+
+
 
 
 
