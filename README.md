@@ -159,6 +159,9 @@ Visit:
 ## 🧑‍💻 Author
 
 Soumyadeep Mallick
+
 DevOps Engineer | Cloud & Automation Enthusiast
+
 📧 soumyadeep.prof@gmail.com
+
 🌐 https://github.com/Soumya-2003
