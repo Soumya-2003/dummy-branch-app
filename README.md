@@ -1,6 +1,5 @@
 # 🚀 Branch Loan API — Production-Ready, Containerized & Monitored
 
-> **Fintech microloans API for emerging markets — now fully automated, observable, and ready for deployment.**
 
 This repository contains the complete **DevOps transformation** of the Branch Loan API, turning a simple local Flask app into a **production-grade, containerized service** with automated CI/CD, multi-environment support, observability, and security scanning.
 
@@ -20,16 +19,16 @@ This repository contains the complete **DevOps transformation** of the Branch Lo
 
 ## 📦 Quick Start: Run Locally
 
-Follow these steps to get the full stack running locally 👇
+Follow these steps to run locally 👇
 
-### 🧩 Step 1: Clone and Fork
+#### 🧩 Step 1: Clone and Fork
 
 ```bash
 git clone https://github.com/YOUR-GITHUB-USERNAME/dummy-branch-app.git
 cd dummy-branch-app
 ```
 
-🔐 Step 2: Set Up Local Domain & SSL
+#### 🔐 Step 2: Set Up Local Domain & SSL
 Add this to your /etc/hosts (Linux/macOS) or C:\Windows\System32\drivers\etc\hosts (Windows):
 127.0.0.1 branchloans.com
 
@@ -43,7 +42,7 @@ openssl req -x509 -nodes -days 365 \
   -subj "/CN=branchloans.com"
 ```
 
-🐳 Step 3: Build & Start Services
+#### 🐳 Step 3: Build & Start Services
 ```
 # Start in development mode
 docker compose --env-file .env.dev up -d --build
@@ -55,7 +54,7 @@ docker compose exec api alembic upgrade head
 docker compose exec api python scripts/seed.py
 ```
 
-🔎 Step 4: Verify Everything Works
+#### 🔎 Step 4: Verify Everything Works
 
 ### ✅ Health Check (with real DB connectivity) 
   https://branchloans.com/health
