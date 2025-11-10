@@ -45,7 +45,7 @@ openssl req -x509 -nodes -days 365 \
   -subj "/CN=branchloans.com"
 ```
 
-### 🐳 Step 3: Build & Start Servicess
+### 🐳 Step 3: Build & Start Services
 ```
 docker compose --env-file .env.dev up -d --build
 docker compose exec api alembic upgrade head
